@@ -1,0 +1,79 @@
+.buzzer-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-right: 1px solid #ccc;
+    height: 100%;
+    resize: horizontal;
+    overflow: auto;
+}
+
+.timer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radial-timer {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.progress-circle {
+    transform: rotate(-90deg); /* Rotate so progress starts from the top */
+}
+
+.progress-ring {
+    transition: stroke-dashoffset 1s linear; /* Smooth progress animation */
+}
+
+.timer-label {
+    position: absolute;
+    top: 35px;
+    left: 40px;
+    font-size: 1.5em;
+}
+
+.start-timer-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buzzer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.buzzer-btn {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buzzer-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.first-buzzer {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #ff5733;
+    text-align: center;
+}
