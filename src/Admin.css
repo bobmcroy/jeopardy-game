@@ -1,0 +1,127 @@
+.admin-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-section h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.admin-section input[type="text"],
+.admin-section input[type="number"],
+.admin-section select,
+.admin-section input[type="color"] {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.admin-section button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-section button:hover {
+    background-color: #0056b3;
+}
+
+.team-management {
+    margin-top: 20px;
+}
+
+.team-management button {
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.team-management button:hover {
+    background-color: #c82333;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+}
+
+.modal-content h4 {
+    margin-bottom: 15px;
+}
+
+.modal-content .team-list {
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.modal-content input[type="checkbox"],
+.modal-content input[type="radio"] {
+    margin-right: 10px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-actions .delete-btn {
+    background-color: #dc3545;
+}
+
+.modal-actions .cancel-btn {
+    background-color: #6c757d;
+}
+
+.modal-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-actions button:hover {
+    opacity: 0.9;
+}

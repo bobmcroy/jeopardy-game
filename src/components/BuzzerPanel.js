@@ -74,7 +74,7 @@ const BuzzerPanel = ({ players, questions, selectedQuestion, setSelectedQuestion
                         onClick={() => handleBuzzerClick(player)}
                         disabled={buzzerDisabled || !!firstBuzzer} // Disable buzzers when the timer runs out or someone buzzes in
                     >
-                        {player.name}<p className="bold-text">(Buzz In)</p>
+                        {player.name}: (Buzz In)
                     </button>
                 ))}
             </div>

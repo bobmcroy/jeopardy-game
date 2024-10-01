@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../Admin.css';
 
 function Admin({ setCategories, setQuestions, categories }) {
     const [newCategory, setNewCategory] = useState('');

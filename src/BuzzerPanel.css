@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
-    padding: 30px;
+    width: 100%;
+    padding: 10px;
     background-color: #f9f9f9;
     border-right: 1px solid #ccc;
     height: 100%;
@@ -19,8 +19,8 @@
 }
 
 .buzzer-btn {
-    width: 140px; /* Narrower buzzer buttons */
-    padding: 5px; /* Reduce padding */
+    width: calc(100% - 10px); /* 100% width of the parent minus 20px for padding (10px on each side) */
+    padding: 5px;
     margin: 5px;
     font-size: 12px;
     text-align: center;
@@ -28,13 +28,26 @@
 }
 
 .buzzer-btn {
+    width: calc(100% - 10px); /* 100% width of the parent minus 20px for padding (10px on each side) */
+    margin: 5px;
     padding: 10px 20px;
-    font-size: 14px;
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
     cursor: pointer;
+}
+
+.buzzer-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Hover and active state improvements */
+.buzzer-btn:hover:not(:disabled) {
+    background-color: #218838;
 }
 
 .timer-section {
@@ -58,11 +71,6 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.buzzer-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
 }
 
 .first-buzzer {
@@ -116,21 +124,11 @@
     gap: 10px;
 }
 
-.buzzer-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
 /* First buzzer display */
 .first-buzzer {
     margin-top: 20px;
     font-size: 1.5em;
     color: #ff5733;
-}
-
-/* Hover and active state improvements */
-.buzzer-btn:hover:not(:disabled) {
-    background-color: #218838;
 }
 
 .question-btn:disabled {
