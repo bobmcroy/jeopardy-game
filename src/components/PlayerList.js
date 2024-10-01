@@ -12,14 +12,14 @@ function PlayerList({ players, setPlayers }) {
 
     return (
         <div className="player-section">
-            <h3>Add Players</h3>
+            <h3>Add Players or Teams</h3>
             <input
                 type="text"
                 value={newPlayer}
                 onChange={e => setNewPlayer(e.target.value)}
-                placeholder="Player name"
+                placeholder="Player or team name"
             />
-            <button onClick={handleAddPlayer}>Add Player</button>
+            <button onClick={handleAddPlayer}>Add Player or Team</button>
 
             <h4>Player List</h4>
             <ul>

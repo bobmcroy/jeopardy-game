@@ -72,6 +72,55 @@
   margin-bottom: 20px;
 }
 
+.admin-panel {
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.admin-panel-container button {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content-container {
+  display: flex;
+  flex: 1;
+  position: relative; /* Important for resizer to be positioned correctly */
+}
+
+.game-board-container {
+  flex: 1; /* Allows the game board to fill available space */
+}
+
+.buzzer-panel-container {
+  flex: 1; /* Allows the buzzer panel to fill available space */
+}
+
+.admin-panel-container {
+  background-color: #f8f8f8;
+  padding: 10px;
+  overflow: auto;
+  transition: width 0.2s ease;
+}
+
+.resizer {
+  width: 5px;
+  cursor: col-resize;
+  background-color: #ccc;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+
 h2 {
   text-align: center;
 }

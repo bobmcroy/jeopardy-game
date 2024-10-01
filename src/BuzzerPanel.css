@@ -1,10 +1,9 @@
 .buzzer-panel {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     width: 300px;
-    padding: 20px;
+    padding: 30px;
     background-color: #f9f9f9;
     border-right: 1px solid #ccc;
     height: 100%;
@@ -12,24 +11,36 @@
     overflow: auto;
 }
 
+.buzzer-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px; /* Move the buttons closer to the top */
+}
+
+.buzzer-btn {
+    width: 140px; /* Narrower buzzer buttons */
+    padding: 5px; /* Reduce padding */
+    margin: 5px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.buzzer-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .timer-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.radial-timer {
-    position: relative;
-    width: 100px;
-    height: 100px;
-}
-
-.progress-circle {
-    transform: rotate(-90deg); /* Rotate so progress starts from the top */
-}
-
-.progress-ring {
-    transition: stroke-dashoffset 1s linear; /* Smooth progress animation */
 }
 
 .timer-label {
@@ -49,23 +60,6 @@
     cursor: pointer;
 }
 
-.buzzer-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.buzzer-btn {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .buzzer-btn:disabled {
     background-color: #ccc;
     cursor: not-allowed;
@@ -76,4 +70,83 @@
     font-size: 1.5em;
     color: #ff5733;
     text-align: center;
+}
+
+.progress-background {
+    fill: none;
+    stroke: #ddd; /* Background circle */
+    stroke-width: 2.8;
+}
+
+.timer-text {
+    font-size: 1.2rem;
+    margin-top: -3rem;
+    position: absolute;
+}
+
+/* Timer display */
+.timer {
+    margin-top: 20px;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Radial timer styling */
+.radial-timer {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.progress-circle {
+    transform: rotate(-90deg); /* Rotate so the progress starts from the top */
+}
+
+.progress-ring {
+    transition: stroke-dashoffset 1s linear; /* Smoothly animate the progress */
+}
+
+/* Buzzer section */
+.buzzer-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buzzer-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* First buzzer display */
+.first-buzzer {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #ff5733;
+}
+
+/* Hover and active state improvements */
+.buzzer-btn:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.question-btn:disabled {
+    background-color: #ccc;
+}
+
+/* Add padding between Reset and Start Timer buttons */
+.timer-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Space between the two buttons */
+    margin-top: 10px;
+}
+
+.timer-controls button {
+    padding: 8px 16px; /* Padding inside the buttons */
+    font-size: 14px;
+    cursor: pointer;
 }

@@ -1,4 +1,8 @@
 /* General layout */
+.bold-text {
+    font-weight: bold;
+}
+
 .game-board {
     display: flex;
     flex-direction: column;

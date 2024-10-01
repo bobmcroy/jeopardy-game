@@ -87,49 +87,6 @@ function GameBoard({ categories, questions, selectedQuestion, setSelectedQuestio
                 ))}
             </div>
 
-            {/* Timer display */}
-            {selectedQuestion && (
-                <div className="timer">
-                    <h2>Time Remaining: {timer}s</h2>
-                    <div className="radial-timer">
-                        <svg className="progress-circle" width="120" height="120">
-                            <circle
-                                className="progress-ring"
-                                stroke="#00aaff"
-                                strokeWidth="10"
-                                fill="transparent"
-                                r="45"
-                                cx="60"
-                                cy="60"
-                                style={{ strokeDasharray: 2 * Math.PI * 45, strokeDashoffset: getStrokeDashoffset() }}
-                            />
-                        </svg>
-                    </div>
-                </div>
-            )}
-
-            {/* Player buzzer buttons */}
-            <div className="buzzer-section">
-                <h3>Buzzer:</h3>
-                {players.map((player, index) => (
-                    <button
-                        key={index}
-                        className="buzzer-btn"
-                        onClick={() => handleBuzzer(player)}
-                        disabled={buzzerDisabled || !!firstBuzzer} // Disable buzzers when the timer runs out or someone buzzes in
-                    >
-                        {player.name} Buzz In
-                    </button>
-                ))}
-            </div>
-
-            {/* Display the first player to buzz in */}
-            {firstBuzzer && (
-                <div className="first-buzzer">
-                    <h3>{firstBuzzer.name} buzzed in first!</h3>
-                </div>
-            )}
-
             {/* Selected question card placed below all the category cards */}
             {selectedQuestion && (
                 <div className="selected-question-card">

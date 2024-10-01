@@ -1,69 +1,121 @@
 import React, { useState, useEffect } from 'react';
 import '../BuzzerPanel.css';
 
-const BuzzerPanel = () => {
-    const [timer, setTimer] = useState(5); // Default 5 seconds timer
-    const [timerActive, setTimerActive] = useState(false);
-    const [firstBuzzer, setFirstBuzzer] = useState(null);
-    const players = ['Player 1', 'Player 2', 'Player 3']; // Example players
+const BuzzerPanel = ({ players, questions, selectedQuestion, setSelectedQuestion, setPlayers }) => {
+    const [timer, setTimer] = useState(5); // Timer set to 5 seconds by default
+    const [activeTimer, setActiveTimer] = useState(false);
+    const [firstBuzzer, setFirstBuzzer] = useState(null); // Tracks which player buzzed first
+    const [buzzerDisabled, setBuzzerDisabled] = useState(false); // Disable all buzzers when the timer runs out
 
-    // Handle the timer countdown
+    // Handle selecting a question
+    const handleQuestionClick = (q) => {
+        setSelectedQuestion(q);
+        setTimer(5); // Reset timer to 5 seconds
+        setActiveTimer(true); // Start the timer
+        setFirstBuzzer(null); // Reset the first buzzer when a new question is selected
+        setBuzzerDisabled(false); // Enable all buzzers for the new question
+    };
+
+    // Timer effect: Decrement the timer every second if active
     useEffect(() => {
-        if (timerActive && timer > 0) {
-            const timerInterval = setInterval(() => {
-                setTimer((prevTime) => prevTime - 1);
+        let interval = null;
+        if (activeTimer && timer > 0) {
+            interval = setInterval(() => {
+                setTimer((prevTimer) => prevTimer - 1);
             }, 1000);
-            return () => clearInterval(timerInterval);
+        } else if (timer === 0) {
+            setActiveTimer(false); // Stop the timer when it reaches zero
+            setBuzzerDisabled(true); // Disable all buzzers when time runs out
         }
-    }, [timerActive, timer]);
+        return () => clearInterval(interval);
+    }, [timer, activeTimer]);
 
-    const handleBuzzerClick = (player) => {
-        if (!firstBuzzer) {
-            setFirstBuzzer(player);
-            setTimerActive(false); // Stop the timer when the first buzzer is pressed
+    // Start the timer
+    const startTimer = () => {
+        if (!activeTimer && timer > 0) {
+            setActiveTimer(true); // Start the countdown
         }
     };
 
-    const resetBuzzerPanel = () => {
-        setFirstBuzzer(null);
-        setTimer(5); // Reset to 5 seconds
-        setTimerActive(false);
+    // Handle player buzz in
+    const handleBuzzerClick = (player) => {
+        if (!firstBuzzer && !buzzerDisabled) { // Check if the buzzer is still enabled
+            setFirstBuzzer(player); // Set the first player to buzz in
+            setActiveTimer(false); // Stop the timer when someone buzzes in
+            setBuzzerDisabled(true); // Disable buzzers once a player buzzes in
+        }
+    };
+
+    // Reset the buzzer panel and timer
+    const resetTimer = () => {
+        setFirstBuzzer(null); // Clear the first buzzer
+        setTimer(5); // Reset the timer to 5 seconds
+        setActiveTimer(false); // Stop the timer
+        setBuzzerDisabled(false); // Enable buzzers
+    };
+
+    // Stroke value for the radial timer visualization
+    const getStrokeDashoffset = () => {
+        const radius = 45; // radius of the SVG circle
+        const circumference = 2 * Math.PI * radius;
+        return circumference - (circumference * timer) / 5; // Adjust for 5 seconds
     };
 
     return (
         <div className="buzzer-panel">
             <h3>Buzzers</h3>
 
-            {/* Timer display */}
-            <div className="timer">
-                <svg className="radial-timer" viewBox="0 0 36 36">
-                    <path
-                        className="progress-circle"
-                        strokeDasharray={`${(timer / 5) * 100}, 100`}
-                        d="M18 2a16 16 0 110 32 16 16 0 010-32z"
-                    />
-                </svg>
-                <div>{timer} seconds</div>
-                <button onClick={() => setTimerActive(true)}>Start Timer</button>
-                <button onClick={resetBuzzerPanel}>Reset</button>
-            </div>
-
-            {/* Buzzer buttons */}
+            {/* Buzzer buttons for each player moved to the top */}
             <div className="buzzer-buttons">
                 {players.map((player, index) => (
                     <button
                         key={index}
                         className="buzzer-btn"
                         onClick={() => handleBuzzerClick(player)}
-                        disabled={firstBuzzer || timer === 0}
+                        disabled={buzzerDisabled || !!firstBuzzer} // Disable buzzers when the timer runs out or someone buzzes in
                     >
-                        {player}
+                        {player.name}<p className="bold-text">(Buzz In)</p>
                     </button>
                 ))}
             </div>
 
-            {/* Display first buzzer */}
-            {firstBuzzer && <div className="first-buzzer">{firstBuzzer} buzzed first!</div>}
+            {/* Timer display */}
+            {selectedQuestion && (
+                <div className="timer">
+                    <h2>Time Remaining: {timer}s</h2>
+                    <div className="radial-timer">
+                        <svg className="progress-circle" width="120" height="120">
+                            <circle
+                                className="progress-ring"
+                                stroke="#00aaff"
+                                strokeWidth="10"
+                                fill="transparent"
+                                r="45"
+                                cx="60"
+                                cy="60"
+                                style={{ strokeDasharray: 2 * Math.PI * 45, strokeDashoffset: getStrokeDashoffset() }}
+                            />
+                        </svg>
+                    </div>
+                </div>
+            )}
+
+            {/* Start Timer and Reset Timer buttons */}
+            <div className="timer-controls">
+                <button onClick={startTimer} disabled={activeTimer || timer === 0}>
+                    Start Timer
+                </button>
+                <button onClick={resetTimer}>
+                    Reset Timer
+                </button>
+            </div>
+
+            {/* Display the first player to buzz in */}
+            {firstBuzzer && (
+                <div className="first-buzzer">
+                    <h3>{firstBuzzer.name} buzzed in first!</h3>
+                </div>
+            )}
         </div>
     );
 };
