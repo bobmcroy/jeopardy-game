@@ -75,8 +75,9 @@ function App() {
                     ref={adminPanelRef}
                     style={{ width: `${adminPanelWidth}px` }}
                 >
+                    <h3>Admin Panel</h3>
                     <div className="admin-panel-container">
-                        <h3>Admin Panel</h3>
+                        {/*<h3>Admin Panel</h3>*/}
                         <PlayerList players={players} setPlayers={setPlayers} />
                         <Admin
                             setCategories={setCategories}
