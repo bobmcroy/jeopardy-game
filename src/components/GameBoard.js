@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import Admin from "./Admin";
 import '../GameBoard.css';
 
-function GameBoard({ categories, questions, selectedQuestion, setSelectedQuestion, players, setPlayers }) {
+function GameBoard({ categories, questions, setSelectedQuestion }) {
     const [answeredQuestions, setAnsweredQuestions] = useState([]);
     const [isFlipped, setIsFlipped] = useState(false);
     const [timer, setTimer] = useState(5); // 5-second timer
     const [activeTimer, setActiveTimer] = useState(false);
+    const [selectedQuestion, setSelectedQuestionLocal] = useState(null); // Store selected question
     const [firstBuzzer, setFirstBuzzer] = useState(null); // Track the first player to buzz in
     const [buzzerDisabled, setBuzzerDisabled] = useState(false); // Disable all buzzers when the timer runs out
 
+
     // Handle selecting a question
     const handleQuestionClick = (q) => {
-        setSelectedQuestion(q);
+        setSelectedQuestionLocal(q); // Set the selected question locally
         setAnsweredQuestions([...answeredQuestions, q]);
         setIsFlipped(false); // Reset flip state when a new question is selected
         setTimer(5); // Reset timer to 5 seconds
@@ -90,14 +93,16 @@ function GameBoard({ categories, questions, selectedQuestion, setSelectedQuestio
             {/* Selected question card placed below all the category cards */}
             {selectedQuestion && (
                 <div className="selected-question-card">
-                    <div className={`flip-card ${isFlipped ? 'flipped' : ''}`} onClick={flipCard}>
+                    <div className={`flip-card ${isFlipped ? 'flipped' : ''}`} onClick={() => setIsFlipped(!isFlipped)}>
                         <div className="flip-card-inner">
                             <div className="flip-card-front">
                                 <div className="question-header">
-                                    <h4>{selectedQuestion.category}</h4>
+                                    <p>{selectedQuestion.category}</p>
                                     <p>${selectedQuestion.points}</p>
                                 </div>
-                                <h3>{selectedQuestion.question}</h3>
+                                <div className="question-header">
+                                    <p>{selectedQuestion.question}</p>
+                                </div>
                             </div>
                             <div className="flip-card-back">
                                 <h3>{selectedQuestion.answer}</h3>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PlayerList from './PlayerList';
 import '../Admin.css';
 
-function Admin({ setCategories, setQuestions, categories }) {
+function Admin({ setCategories, setQuestions, categories = [], selectedQuestion, players, setPlayers }) {
     const [newCategory, setNewCategory] = useState('');
     const [categoryColor, setCategoryColor] = useState('#007bff');
     const [newQuestion, setNewQuestion] = useState({ question: '', answer: '', points: 0, category: '' });
@@ -63,7 +64,7 @@ function Admin({ setCategories, setQuestions, categories }) {
                     value={newQuestion.category}
                     onChange={e => setNewQuestion({ ...newQuestion, category: e.target.value })}>
                     <option value="">Select Category</option>
-                    {categories.map((category, index) => (
+                    {categories && categories.map((category, index) => (
                         <option key={index} value={category.name}>{category.name}</option>
                     ))}
                 </select>

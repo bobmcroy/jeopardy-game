@@ -1,0 +1,146 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff; /* White background for the modal */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    width: 400px; /* Fixed width for the modal */
+}
+
+.modal {
+    position: fixed; /* Position it relative to the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset the transform to truly center */
+    background-color: white; /* Background color of the modal */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    padding: 20px; /* Padding inside the modal */
+    z-index: 1000; /* Ensure it appears above other elements */
+    width: 400px; /* Width of the modal */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between; /* Space between title and close button */
+    align-items: center;
+}
+
+.modal-title {
+    font-size: 1.5em; /* Font size for modal title */
+    text-align: center; /* Center align the title */
+}
+.modal-content {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    width: 400px; /* Width of the modal */
+    /*margin: 20px 0;*/ /* Space between header and content */
+}
+
+.modal-content h3 {
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.modal-content label {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center the items vertically */
+}
+
+.modal-content input[type="radio"],
+.modal-content input[type="checkbox"] {
+    margin-right: 0; /* Remove spacing between input and label text */
+    margin-left: 0; /* Ensure no left margin as well */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between buttons */
+    margin-top: 20px; /* Space above the buttons */
+}
+
+.modal-content button {
+    padding: 10px 20px; /* Padding for the buttons */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners for the buttons */
+    background-color: #007bff; /* Background color for buttons */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.modal-content button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.modal-content button:disabled {
+    background-color: #ccc; /* Background color when disabled */
+    cursor: not-allowed; /* Not-allowed cursor when disabled */
+}
+
+.modal-footer {
+    display: flex; /* Flexbox for centering buttons */
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between the buttons */
+}
+
+.modal-footer button {
+    padding: 10px 20px; /* Padding for the buttons */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.modal-footer .delete-button {
+    background-color: #dc3545; /* Red background for delete */
+    color: white; /* White text color */
+}
+
+.modal-footer .cancel-button {
+    background-color: #007bff; /* Blue background for cancel */
+    color: white; /* White text color */
+}
+
+.modal-footer button:hover {
+    opacity: 0.9; /* Slightly transparent on hover */
+}
+
+/* Style for form items (radio buttons and checkboxes) */
+.form-item {
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center align items vertically */
+    margin-bottom: 15px; /* Space between form items */
+}
+
+.form-item input {
+    margin-right: 10px; /* Space between input and label */
+}
+
+/* Optional shadowing for checkboxes and radios */
+.form-item input[type="radio"],
+.form-item input[type="checkbox"] {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Add shadow to inputs */
+}
+
+.radio-group,
+.checkbox-group {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center align vertically */
+
+}
+
+.radio-group input,
+.checkbox-group input {
+    margin-right: 0; /* Remove spacing between input and label text */
+    width: 30px;
+}

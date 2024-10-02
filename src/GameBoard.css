@@ -77,10 +77,11 @@
     background-color: transparent;
     width: 80%; /* Full width for the flip card */
     max-width: none; /* No max width constraint */
-    height: 50px; /* Adjust height to fit the content */
+    height: 100px; /* Adjust height to fit the content */
     perspective: 1000px;
     margin: 0 auto;
     cursor: pointer;
+    font-style: normal;
 }
 
 .flip-card-inner {

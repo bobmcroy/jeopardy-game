@@ -1,0 +1,89 @@
+.player-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items */
+    padding: 10px;
+    background-color: #f9f9f9; /* Background color */
+    border: 1px solid #ccc; /* Border for the section */
+    border-radius: 8px; /* Rounded corners */
+    width: 260px; /* Fixed width for the player section */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.player-section h3 {
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+.player-section input {
+    padding: 10px; /* Padding inside the input */
+    margin-bottom: 10px; /* Space below the input */
+    border: 1px solid #ccc; /* Border for the input */
+    border-radius: 5px; /* Rounded corners for the input */
+    width: 100%; /* Full width */
+}
+
+.player-section button {
+    padding: 10px 20px; /* Padding for the buttons */
+    margin-bottom: 10px; /* Space below the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners for the buttons */
+    background-color: #007bff; /* Background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 14px; /* Font size */
+}
+
+/* Add margin to the Manage Teams button for spacing */
+.manage-teams-button {
+    margin-top: 20px; /* Space above the Manage Teams button */
+}
+
+
+.player-section button:disabled {
+    background-color: #ccc; /* Background color when disabled */
+    cursor: not-allowed; /* Not-allowed cursor when disabled */
+}
+
+.player-section ul {
+    list-style-type: none; /* Remove bullets from the list */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.player-section li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+    font-size: 14px; /* Font size for list items */
+}
+
+.player-section li span {
+    flex: 1; /* Give space to the player name and score */
+}
+
+.player-section li button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.player-section li button:hover {
+    background-color: #0056b3;
+}
+
+.player-section li button:active {
+    background-color: #004085;
+}
+
+.score-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.score-buttons button:active {
+    background-color: #004085;
+}

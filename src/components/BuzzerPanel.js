@@ -61,6 +61,24 @@ const BuzzerPanel = ({ players, questions, selectedQuestion, setSelectedQuestion
         return circumference - (circumference * timer) / 5; // Adjust for 5 seconds
     };
 
+    const BuzzerPanel = ({ players, updatePlayerScore }) => {
+        const handleCorrectAnswer = (playerIndex) => {
+            updatePlayerScore(playerIndex, 10); // Add 10 points for a correct answer
+        };
+
+        const handleWrongAnswer = (playerIndex) => {
+            updatePlayerScore(playerIndex, -10); // Deduct points for a wrong answer
+        };
+
+        return (
+            <div className="buzzer-panel">
+                {/* Add your buzzer logic here */}
+                <button onClick={() => handleCorrectAnswer(0)}>Player 1 Correct</button>
+                <button onClick={() => handleWrongAnswer(0)}>Player 1 Wrong</button>
+            </div>
+        );
+    };
+
     return (
         <div className="buzzer-panel">
             <h3>Buzzers</h3>
@@ -80,25 +98,23 @@ const BuzzerPanel = ({ players, questions, selectedQuestion, setSelectedQuestion
             </div>
 
             {/* Timer display */}
-            {selectedQuestion && (
-                <div className="timer">
-                    <h2>Time Remaining: {timer}s</h2>
-                    <div className="radial-timer">
-                        <svg className="progress-circle" width="120" height="120">
-                            <circle
-                                className="progress-ring"
-                                stroke="#00aaff"
-                                strokeWidth="10"
-                                fill="transparent"
-                                r="45"
-                                cx="60"
-                                cy="60"
-                                style={{ strokeDasharray: 2 * Math.PI * 45, strokeDashoffset: getStrokeDashoffset() }}
-                            />
-                        </svg>
-                    </div>
+            <div className="timer">
+                <h5>Time Remaining: {timer}s</h5>
+                <div className="radial-timer">
+                    <svg className="progress-circle" width="120" height="120">
+                        <circle
+                            className="progress-ring"
+                            stroke="#00aaff"
+                            strokeWidth="10"
+                            fill="transparent"
+                            r="45"
+                            cx="60"
+                            cy="60"
+                            style={{ strokeDasharray: 2 * Math.PI * 45, strokeDashoffset: getStrokeDashoffset() }}
+                        />
+                    </svg>
                 </div>
-            )}
+            </div>
 
             {/* Start Timer and Reset Timer buttons */}
             <div className="timer-controls">
