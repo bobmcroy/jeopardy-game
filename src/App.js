@@ -11,6 +11,7 @@ function App() {
     const [questions, setQuestions] = useState([]);
     const [selectedQuestion, setSelectedQuestion] = useState(null);
     const [isAdminCollapsed, setIsAdminCollapsed] = useState(false); // State for collapsing admin
+    const [selectedQuestionPoints, setSelectedQuestionPoints] = useState(0); // State to hold question points
 
     // **New state for admin panel width**
     const [adminPanelWidth, setAdminPanelWidth] = useState(300); // Initial width in pixels
@@ -45,7 +46,7 @@ function App() {
     return (
         <div className="app-container">
             <header className="app-header">
-                <h1>Jeopardy Game</h1>
+                <h2>Jeopardy Game</h2>
             </header>
 
             <div className="content-container">
@@ -64,6 +65,7 @@ function App() {
                         questions={questions}
                         selectedQuestion={selectedQuestion}
                         setSelectedQuestion={setSelectedQuestion}
+                        setSelectedQuestionPoints={setSelectedQuestionPoints} // Pass the function to update points
                         players={players} // Pass the players to GameBoard
                         setPlayers={setPlayers}
                     />
@@ -77,8 +79,11 @@ function App() {
                 >
                     <h3>Admin Panel</h3>
                     <div className="admin-panel-container">
-                        {/*<h3>Admin Panel</h3>*/}
-                        <PlayerList players={players} setPlayers={setPlayers} />
+                        <PlayerList
+                            players={players}
+                            setPlayers={setPlayers}
+                            selectedQuestionPoints={selectedQuestion ? selectedQuestion.points : 0}
+                        />
                         <Admin
                             setCategories={setCategories}
                             setQuestions={setQuestions}

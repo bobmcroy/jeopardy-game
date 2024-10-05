@@ -121,7 +121,8 @@
 }
 
 
-h2 {
+h2,
+h3 {
   text-align: center;
 }
 
@@ -196,7 +197,8 @@ button {
 .question-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0px;
+  padding: 0px;
 }
 
 .question-box {
@@ -207,7 +209,7 @@ button {
 .question-btn {
   background-color: #007bff;
   color: white;
-  border: none;
+  border: 2px #333333;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -216,6 +218,10 @@ button {
 
 .question-btn:hover {
   background-color: #0056b3;
+}
+
+.question-btn.selected {
+  background-color: #ff8c00;
 }
 
 /* Admin panel styling */
@@ -229,7 +235,7 @@ button {
   padding: 10px;
   background-color: #007bff;
   color: white;
-  border: none;
+  border: 2px #333333;
   border-radius: 5px;
   margin-top: 10px;
 }
@@ -255,7 +261,7 @@ input, select {
 
 .app-header {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   background-color: #f8f9fa;
 }
 
@@ -291,8 +297,11 @@ input, select {
   border-radius: 8px;
   border: 2px solid;
   padding: 20px;
-  width: 200px;
+  width: 140px;
   transition: transform 0.3s ease;
+  word-wrap: break-word; /* Ensure words wrap inside the card */
+  overflow-wrap: break-word; /* Compatibility for different browsers */
+  white-space: normal; /* Ensure text wraps to next line instead of staying on one line */
 }
 
 .category-card:hover {
@@ -302,31 +311,6 @@ input, select {
 .category-title {
   font-size: 1.5em;
   margin-bottom: 15px;
-}
-
-/* Questions inside the category card */
-.question-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.question-box {
-  display: flex;
-  justify-content: center;
-}
-
-.question-btn {
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100px;
-}
-
-.question-btn.selected {
-  background-color: #ff8c00;
 }
 
 /* Admin panel styling */

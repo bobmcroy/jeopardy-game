@@ -16,18 +16,22 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 30px; /* Space between categories and question card */
+    gap: 0px;
+    margin-bottom: 40px; /* Space between categories and question card */
     width: 100%; /* Make sure the categories container is full width */
 }
 
+/* main category cards on gameboard */
 .category-card {
     background-color: #f0f0f0;
     border-radius: 8px;
     border: 2px solid;
-    padding: 20px;
-    width: 200px;
+    padding: 10px;
+    width: 160px;
     transition: transform 0.3s ease;
+    word-wrap: break-word; /* Ensure words wrap inside the card */
+    overflow-wrap: break-word; /* Compatibility for different browsers */
+    white-space: normal; /* Ensure text wraps to next line instead of staying on one line */
 }
 
 .category-card:hover {
@@ -35,23 +39,26 @@
 }
 
 .category-title {
-    font-size: 1.5em;
-    margin-bottom: 15px;
+    font-size: 1.4em;
+    margin-bottom: 0;
 }
 
 /* Question buttons */
 .question-box {
     text-align: center;
+    border: 2px #333333;
 }
 
 .question-btn {
     color: white;
-    border: none;
-    padding: 10px;
+    border: 2px #333333;
+    padding: 15px;
     border-radius: 5px;
     cursor: pointer;
-    width: 100px;
+    width: 90%;
     transition: background-color 0.3s ease;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 .question-btn:hover {
@@ -64,20 +71,24 @@
     cursor: not-allowed;
 }
 
+.question-btn:disabled {
+    background-color: #ccc;
+}
+
 /* Selected question card */
 .selected-question-card {
     width: 100%; /* Full width of the container */
     max-width: 100%; /* Ensure no overflow */
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: center; /* Center the question card */
 }
 
 .flip-card {
     background-color: transparent;
-    width: 80%; /* Full width for the flip card */
+    width: 90%; /* Full width for the flip card */
     max-width: none; /* No max width constraint */
-    height: 100px; /* Adjust height to fit the content */
+    height: 175px; /* Adjust height to fit the content */
     perspective: 1000px;
     margin: 0 auto;
     cursor: pointer;
@@ -87,7 +98,7 @@
 .flip-card-inner {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 75%;
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
@@ -102,18 +113,18 @@
 .flip-card-back {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 75%;
     backface-visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
 }
 
 .flip-card-front {
-    background-color: #007bff;
-    color: white;
+    background-color: #d3d3d3;
+    color: black;
     flex-direction: column; /* Stack vertically */
 }
 
@@ -126,14 +137,37 @@
 /* Add styles for the category and points at the top of the question card */
 .question-header {
     display: flex;
+    padding: 10px;
     justify-content: space-between;
     width: 100%;
-    padding: 10px;
     font-size: 1.2em;
 }
 
 .question-header h4, .question-header p {
     margin: 0;
+}
+
+.question-body {
+    display: flex;
+    justify-content: center; /* Horizontally center the question */
+    text-align: center; /* Align text within the block */
+    padding: 15px; /* Optional: Add some padding for better spacing */
+}
+
+.question-card-header {
+    background-color: #363636; /* Set your desired color */
+    padding: 10px; /* Adjust padding for spacing */
+    border-radius: 10px 10px 0 0; /* Optional: rounded corners for the top */
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.question-card-header p {
+    margin: 0;
+    color: #fff; /* Set text color if necessary */
 }
 
 /* Timer display */
@@ -193,8 +227,4 @@
 /* Hover and active state improvements */
 .buzzer-btn:hover:not(:disabled) {
     background-color: #218838;
-}
-
-.question-btn:disabled {
-    background-color: #ccc;
 }

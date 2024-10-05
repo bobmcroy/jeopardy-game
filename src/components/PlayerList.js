@@ -21,10 +21,10 @@ function PlayerList({ players, setPlayers, selectedQuestionPoints }) {
         setIsModalOpen(false);
     };
 
-    const handleScoreChange = (player, change) => {
+    const handleScoreChange = (index, change) => {
         setPlayers(prevPlayers =>
-            prevPlayers.map(p =>
-                p.name === player.name ? { ...p, score: Math.max(0, p.score + change) } : p
+            prevPlayers.map((p, i) =>
+                i === index ? { ...p, score: Math.max(0, p.score + change) } : p
             )
         );
     };
@@ -45,15 +45,16 @@ function PlayerList({ players, setPlayers, selectedQuestionPoints }) {
                 Manage Teams
             </button>
 
-            <h4>Player List</h4>
+            {/*  */}
+            <h4>Player / Team Scores</h4>
             <ul>
                 {players && players.length > 0 ? (
                     players.map((player, index) => (
                         <li key={index}>
-                            {player.name} - {player.score} points
-                            <div>
-                                <button onClick={() => handleScoreChange(player, selectedQuestionPoints)}>+</button>
-                                <button onClick={() => handleScoreChange(player, -selectedQuestionPoints)}>-</button>
+                            {player.name}: {player.score}
+                            <div className="button-container">
+                                <button onClick={() => handleScoreChange(index, selectedQuestionPoints)}>+{selectedQuestionPoints || 0}</button> {/*default to +0*/}
+                                <button onClick={() => handleScoreChange(index, -selectedQuestionPoints)}>-{selectedQuestionPoints || 0}</button> {/*default to -0*/}
                             </div>
                         </li>
                     ))

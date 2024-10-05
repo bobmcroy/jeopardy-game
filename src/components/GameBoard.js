@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Admin from "./Admin";
+import PlayerList from "./PlayerList";
 import '../GameBoard.css';
 
-function GameBoard({ categories, questions, setSelectedQuestion }) {
+function GameBoard({ categories, questions, setSelectedQuestion, players, setPlayers }) {
     const [answeredQuestions, setAnsweredQuestions] = useState([]);
     const [isFlipped, setIsFlipped] = useState(false);
     const [timer, setTimer] = useState(5); // 5-second timer
@@ -10,6 +11,7 @@ function GameBoard({ categories, questions, setSelectedQuestion }) {
     const [selectedQuestion, setSelectedQuestionLocal] = useState(null); // Store selected question
     const [firstBuzzer, setFirstBuzzer] = useState(null); // Track the first player to buzz in
     const [buzzerDisabled, setBuzzerDisabled] = useState(false); // Disable all buzzers when the timer runs out
+    const [selectedQuestionPoints, setSelectedQuestionPoints] = useState(0); // Add this line at the top of your GameBoard component
 
 
     // Handle selecting a question
@@ -21,6 +23,12 @@ function GameBoard({ categories, questions, setSelectedQuestion }) {
         setActiveTimer(true); // Start the timer
         setFirstBuzzer(null); // Reset the first buzzer when a new question is selected
         setBuzzerDisabled(false); // Enable all buzzers for the new question
+
+        // Show alert with the question points
+        //alert(`Selected Question Points: ${q.points}`);
+        // Pass the selected question points back to App
+        setSelectedQuestion(q);
+        setSelectedQuestionPoints(q.points);
     };
 
     // Timer effect: Decrement the timer every second if active
@@ -59,7 +67,7 @@ function GameBoard({ categories, questions, setSelectedQuestion }) {
                             style={{ backgroundColor: isAnswered ? '#ff8c00' : category.color }}
                             disabled={isAnswered} // Disable the button once answered
                         >
-                            {q.points}
+                            ${q.points}
                         </button>
                     </div>
                 );
@@ -90,17 +98,17 @@ function GameBoard({ categories, questions, setSelectedQuestion }) {
                 ))}
             </div>
 
-            {/* Selected question card placed below all the category cards */}
+            {/* Selected question flip card placed below all the category cards */}
             {selectedQuestion && (
                 <div className="selected-question-card">
                     <div className={`flip-card ${isFlipped ? 'flipped' : ''}`} onClick={() => setIsFlipped(!isFlipped)}>
                         <div className="flip-card-inner">
                             <div className="flip-card-front">
-                                <div className="question-header">
+                                <div className="question-card-header">
                                     <p>{selectedQuestion.category}</p>
                                     <p>${selectedQuestion.points}</p>
                                 </div>
-                                <div className="question-header">
+                                <div className="question-body">
                                     <p>{selectedQuestion.question}</p>
                                 </div>
                             </div>
@@ -111,6 +119,9 @@ function GameBoard({ categories, questions, setSelectedQuestion }) {
                     </div>
                 </div>
             )}
+            {/*
+            <PlayerList players={players} setPlayers={setPlayers} selectedQuestionPoints={selectedQuestionPoints} />
+            */}
         </div>
     );
 }
