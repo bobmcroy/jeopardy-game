@@ -4,6 +4,7 @@ import GameBoard from './components/GameBoard';
 import PlayerList from './components/PlayerList';
 import BuzzerPanel from './components/BuzzerPanel'; // Import the BuzzerPanel component
 import './App.css';
+import CsvLoader from './CsvLoader';
 
 function App() {
     const [categories, setCategories] = useState([]);

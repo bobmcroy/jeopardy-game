@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Admin from "./Admin";
 import PlayerList from "./PlayerList";
+import CsvLoader from '../CsvLoader';
 import '../GameBoard.css';
 
 function GameBoard({ categories, questions, setSelectedQuestion, players, setPlayers }) {
     const [answeredQuestions, setAnsweredQuestions] = useState([]);
     const [isFlipped, setIsFlipped] = useState(false);
-    const [timer, setTimer] = useState(5); // 5-second timer
+    const [timer, setTimer, resetTimer] = useState(5); // 5-second timer
     const [activeTimer, setActiveTimer] = useState(false);
     const [selectedQuestion, setSelectedQuestionLocal] = useState(null); // Store selected question
     const [firstBuzzer, setFirstBuzzer] = useState(null); // Track the first player to buzz in
@@ -19,10 +20,10 @@ function GameBoard({ categories, questions, setSelectedQuestion, players, setPla
         setSelectedQuestionLocal(q); // Set the selected question locally
         setAnsweredQuestions([...answeredQuestions, q]);
         setIsFlipped(false); // Reset flip state when a new question is selected
-        setTimer(5); // Reset timer to 5 seconds
-        setActiveTimer(true); // Start the timer
-        setFirstBuzzer(null); // Reset the first buzzer when a new question is selected
-        setBuzzerDisabled(false); // Enable all buzzers for the new question
+        //setTimer(5); // Reset timer to 5 seconds
+        //setActiveTimer(true); // Start the timer
+        //setFirstBuzzer(null); // Reset the first buzzer when a new question is selected
+        //setBuzzerDisabled(false); // Enable all buzzers for the new question
 
         // Show alert with the question points
         //alert(`Selected Question Points: ${q.points}`);
@@ -35,9 +36,9 @@ function GameBoard({ categories, questions, setSelectedQuestion, players, setPla
     useEffect(() => {
         let interval = null;
         if (activeTimer && timer > 0) {
-            interval = setInterval(() => {
-                setTimer((prevTimer) => prevTimer - 1);
-            }, 1000);
+            //interval = setInterval(() => {
+            //    setTimer((prevTimer) => prevTimer - 1);
+            //}, 1000);
         } else if (timer === 0) {
             setActiveTimer(false); // Stop the timer when it reaches zero
             setBuzzerDisabled(true); // Disable all buzzers when time runs out

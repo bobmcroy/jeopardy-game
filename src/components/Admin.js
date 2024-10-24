@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PlayerList from './PlayerList';
+import CsvLoader from '../CsvLoader';
 import '../Admin.css';
 
 function Admin({ setCategories, setQuestions, categories = [], selectedQuestion, players, setPlayers }) {
@@ -26,6 +27,8 @@ function Admin({ setCategories, setQuestions, categories = [], selectedQuestion,
         <div className="admin-section">
             <div className="category-section">
                 <h3>Add Category</h3>
+                {/* CSV Loader */}
+                <CsvLoader setCategories={setCategories} setQuestions={setQuestions} />
                 <input
                     type="text"
                     value={newCategory}
